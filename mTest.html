@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<p id="oData" > ORIENTATION DATA : </p>
+</body>
+ <script>
+ 	var onOrientationChange=function(data){
+	console.log("orientation changed to:");
+	console.log(data);
+
+	var oText = "";
+
+	for ( var key in data){
+		oText += key + ":" + data[key] + "<br />";
+		}
+
+	document.getElementById("oData").innerHTML = oText;
+ 	};
+
+ 	if(window.DeviceOrientationEvent){
+ 		//add an event listener that calls the "onOrientationChange"
+ 		//function whenever the device's orientation data changes
+ 		window.addEventListener(
+ 			'deviceorientation',
+ 			onOrientationChange,
+ 			false);
+ 	}
+ 	else{
+ 		console.log("ERROR: this browser can't detect orientation events");
+ 	}
+
+ </script>
+</html>
