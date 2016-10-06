@@ -40,9 +40,9 @@ var onDeviceMotion= function(data){
 	console.log(data);
 	var mText = "MOTION DATA: <br />";
 
-	mText += "Alpha (Yaw): " + data.acceleration.x + " <br />";
-	mText += "Beta (Pitch): " + data.acceleration.y + " <br />";
-	mText += "Gamma (Roll): " + data.acceleration.z + " <br />";
+	mText += "Acc X :" + data.acceleration.x + " <br />";
+	mText += "Acc Y : " + data.acceleration.y + " <br />";
+	mText += "Acc Z : " + data.acceleration.z + " <br />";
 	document.getElementById("mData").innerHTML = mText;
 }
 
