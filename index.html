@@ -37,8 +37,14 @@ if (window.DeviceOrientationEvent){
 
 //windows.DeviceMotionEvent
 //"devicemotion"
+var latestMdata;
+//var cube.position= latestMdata.acceleration
+//new THREE.Vector3(latestMData.acceleration.x,latestMData.acceleration.y,latestMData.acceleration.z);
+
 var onDeviceMotion= function(data){
 	console.log(data);
+	latestMdata=data;
+
 	var mText = "MOTION DATA: <br />";
 
 	mText += "Acc X :" + data.acceleration.x + " <br />";
