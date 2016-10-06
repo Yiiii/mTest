@@ -47,9 +47,9 @@ var onDeviceMotion= function(data){
 
 	var mText = "MOTION DATA: <br />";
 
-	mText += "Acc X :" + data.acceleration.x + " <br />";
-	mText += "Acc Y : " + data.acceleration.y + " <br />";
-	mText += "Acc Z : " + data.acceleration.z + " <br />";
+	mText += "Acc X :" + data.accelerationIncludingGravity.x + " <br />";
+	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
+	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
 	document.getElementById("mData").innerHTML = mText;
 }
 
