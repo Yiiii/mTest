@@ -1,4 +1,14 @@
+var audioCtx= new (window.AudioContext||window.webkitAudioContext);
 
+var oscillator = audioCtx.createOscillator();
+
+var gainNode= audioCtx.createGain();
+
+var delaynNode = audioCtx.createDelay(5.0);
+
+oscillator.connect(delaynNode);
+delaynNode.connect(gainNode);
+gainNode.connect(audioCtx.destination);
 //http://www.bbcollinsworth.com/web/mTest.html
 
 var onOrientationChange = function(data){
@@ -11,6 +21,8 @@ var onOrientationChange = function(data){
 	oText += "Beta (Pitch): " + data.beta + " <br />";
 	oText += "Gamma (Roll): " + data.gamma + " <br />";
 
+	oscillator.frequency.value= (data.alpha/360)*5000;
+	gainNode.gain.value = .1;
 	document.getElementById("oData").innerHTML = oText;
 };
 
