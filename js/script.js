@@ -6,6 +6,12 @@ var gainNode= audioCtx.createGain();
 
 var delaynNode = audioCtx.createDelay(5.0);
 
+oscillator.type = 'sine';
+oscillator.frequency.value = 100;
+oscillator.start(0);
+
+gainNode.gain.value=0.1;
+
 oscillator.connect(delaynNode);
 delaynNode.connect(gainNode);
 gainNode.connect(audioCtx.destination);
@@ -23,6 +29,7 @@ var onOrientationChange = function(data){
 
 	oscillator.frequency.value= (data.alpha/360)*5000;
 	gainNode.gain.value = .1;
+	console.log("hey");
 	document.getElementById("oData").innerHTML = oText;
 };
 
