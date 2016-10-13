@@ -161,18 +161,22 @@ function animatedRender(){
 //setting boundary
 		if(posX>=100){
 		posX=100;
-		spdX=-spdX/5;
+		spdX=-spdX/2;
 		accX=-accx/5;
 	}
 	else if(posX<=-100){
 		posX=-100;
-		spdX=-spdX/5;
+		spdX=-spdX/2;
 		accX=-accx/5;
 	}
 	if(posY>=100){
 		posY=100;
+		spdY=-spdY/2;
+		accY=-accY/5;
 	} else if(posY<=-100){
 		posY=-100;
+		spdY=-spdY/2;
+		accY=-accY/5;
 	}
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
