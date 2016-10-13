@@ -143,7 +143,7 @@ function animatedRender(){
 	requestAnimationFrame( animatedRender );
 	spdX+=accX;
 	posX+=spdX;
-	
+
 	spdY+=accY;
 	posY+=spdY;
 
@@ -158,18 +158,22 @@ function animatedRender(){
 	// } else if(posY<=0){
 	// 	posY=0
 	// }
-
+//setting boundary
 		if(posX>=100){
 		posX=100;
+		spdX=-spdX;
+		accX=-accx;
 	}
 	else if(posX<=-100){
 		posX=-100;
+		spdX=-spdX;
+		accX=-accx;
 	}
-	// if(posY>=100){
-	// 	posY=100;
-	// } else if(posY<=-100){
-	// 	posY=-100;
-	// }
+	if(posY>=100){
+		posY=100;
+	} else if(posY<=-100){
+		posY=-100;
+	}
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
 
