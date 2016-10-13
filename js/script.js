@@ -129,7 +129,7 @@ function init(){
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
 	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
 	scene.add( spriteSphere );
-	spriteSphere.position.set(posX,posY,0);
+	spriteSphere.position.set(accX,accY,0);
 
 
 }
@@ -141,7 +141,7 @@ function animatedRender(){
 	requestAnimationFrame( animatedRender );
 
 //move the sprite
-	spriteSphere.position.set(posX,posY,0);
+	spriteSphere.position.set(accX,accY,0);
 
 //set camera
 camera.position.set(0,0,300);
