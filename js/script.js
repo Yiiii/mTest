@@ -49,7 +49,7 @@ var spriteGeometry;
 var spriteMaterial;
 var spriteSphere;
 
-var posX=0,posY=0,spd=0, accX=0,accY=0;
+var posX=0,posY=0,spd=1, accX=1,accY=0;
 //================side function=================
 var onOrientationChange = function(data){
 	console.log('NEW DEVICE ORIENTATION DATA!:');
@@ -62,7 +62,7 @@ var onOrientationChange = function(data){
 	oscillator.frequency.value= (data.alpha/360)*5000;
 	gainNode.gain.value = .1;
 	console.log("hey");
-	// document.getElementById("oData").innerHTML = oText;
+	document.getElementById("oData").innerHTML = oText;
 };
 
 var latestMdata;
@@ -73,7 +73,7 @@ var onDeviceMotion= function(data){
 	mText += "Acc X :" + data.accelerationIncludingGravity.x + " <br />";
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
-	// document.getElementById("mData").innerHTML = mText;
+	document.getElementById("mData").innerHTML = mText;
 	accX=data.accelerationIncludingGravity.x*10;
 accY=data.accelerationIncludingGravity.y*10;
 }
