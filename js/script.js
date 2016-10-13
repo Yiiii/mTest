@@ -161,7 +161,7 @@ spdX+=accX;
 	spriteSphere.position.set(posX,posY,0);
 
 //set camera
-camera.position.set(0,0,300);
+camera.position.set(0,0,800);
 
 //render the graphic, yeah!!!
 	renderer.render(scene, camera);
