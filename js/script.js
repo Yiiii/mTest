@@ -146,11 +146,11 @@ spdX+=accX;
 	posX+=spdX;
 	posY+=spdY;
 
-	if(posX>=window.innerWidth){
-		posX=window.innerWidth;
+	if(posX>=window.innerWidth/2){
+		posX=window.innerWidth/2;
 	}
-	else if(posX<=0){
-		posX=0;
+	else if(posX<=(-window.innerWidth/2){
+		posX=-window.innerWidth/2;
 	}
 	if(posY>=window.innerHeight){
 		accY=window.innerHeight;
