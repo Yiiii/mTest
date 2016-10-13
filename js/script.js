@@ -159,21 +159,21 @@ function animatedRender(){
 	// 	posY=0
 	// }
 //setting boundary
-		if(posX>=100){
+		if(posX>=100+1){
 		posX=100;
 		spdX=-spdX/2;
 		accX=-accx/5;
 	}
-	else if(posX<=-100){
+	else if(posX<=-(100+1){
 		posX=-100;
 		spdX=-spdX/2;
 		accX=-accx/5;
 	}
-	if(posY>=100){
+	if(posY>=100+1){
 		posY=100;
 		spdY=-spdY/2;
 		accY=-accY/5;
-	} else if(posY<=-100){
+	} else if(posY<=-(100+1){
 		posY=-100;
 		spdY=-spdY/2;
 		accY=-accY/5;
