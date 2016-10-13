@@ -74,8 +74,8 @@ var onDeviceMotion= function(data){
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
 	// document.getElementById("mData").innerHTML = mText;
-	accX=data.accelerationIncludingGravity.x/5;
-accY=data.accelerationIncludingGravity.y/5;
+	accX=data.accelerationIncludingGravity.x/8;
+accY=data.accelerationIncludingGravity.y/8;
 }
 
 var Vec3 = function (x,y,z){
@@ -182,7 +182,7 @@ function animatedRender(){
 	spriteSphere.position.set(posX,posY,0);
 
 //set camera
-camera.position.set(0,0,1500);
+camera.position.set(0,0,1200);
 
 //render the graphic, yeah!!!
 	renderer.render(scene, camera);
