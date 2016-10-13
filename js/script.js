@@ -74,8 +74,8 @@ var onDeviceMotion= function(data){
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
 	document.getElementById("mData").innerHTML = mText;
-	accX=data.accelerationIncludingGravity.x;
-accY=data.accelerationIncludingGravity.y;
+	accX=data.accelerationIncludingGravity.x*10;
+accY=data.accelerationIncludingGravity.y*10;
 }
 
 var Vec3 = function (x,y,z){
@@ -139,7 +139,7 @@ function animatedRender(){
 	requestAnimationFrame( animatedRender );
 
 //move the sprite
-
+	spriteSphere.position.set(0+spd+accX,0+spd+accY,0);
 
 //set camera
 camera.position.set(0,0,300);
