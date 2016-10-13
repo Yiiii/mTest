@@ -49,7 +49,7 @@ var spriteGeometry;
 var spriteMaterial;
 var spriteSphere;
 
-var posX=0,posY=0,spdX=0, spdY=0 accX=0,accY=0;
+var posX=0,posY=0,spd=0, accX=0,accY=0;
 //================side function=================
 var onOrientationChange = function(data){
 	console.log('NEW DEVICE ORIENTATION DATA!:');
@@ -70,7 +70,7 @@ var onDeviceMotion= function(data){
 	console.log(data);
 	latestMdata=data;
 	var mText = "MOTION DATA: <br />";
-	mText += "Acc X 9:" + data.accelerationIncludingGravity.x + " <br />";
+	mText += "Acc X 10:" + data.accelerationIncludingGravity.x + " <br />";
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
 	document.getElementById("mData").innerHTML = mText;
@@ -123,10 +123,6 @@ function init(){
 	var ambientLight = new THREE.AmbientLight(0x404040,2.4);
 	scene.add(ambientLight);
 
-	spdX+=accX;
-	spdY+=accY;
-	posX+=spdX;
-	posY+=spdY;
 	//init the sphere sprite, aha
 	spriteGeometry = new THREE.SphereGeometry( 30, 40, 40 );
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
