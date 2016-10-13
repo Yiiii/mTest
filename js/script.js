@@ -170,7 +170,7 @@ spdX+=accX;
 		posY=-100;
 	}
 //move the sprite
-	spriteSphere.position.set(posX,0,posY);
+	spriteSphere.position.set(posX,posY,0);
 
 //set camera
 camera.position.set(0,0,800);
