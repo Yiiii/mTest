@@ -70,7 +70,7 @@ var onDeviceMotion= function(data){
 	console.log(data);
 	latestMdata=data;
 	var mText = "MOTION DATA: <br />";
-	mText += "Acc X 05:" + data.accelerationIncludingGravity.x + " <br />";
+	mText += "Acc X 07:" + data.accelerationIncludingGravity.x + " <br />";
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
 	document.getElementById("mData").innerHTML = mText;
