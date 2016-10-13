@@ -141,7 +141,10 @@ function init(){
 function animatedRender(){
 	//prepare the render
 	requestAnimationFrame( animatedRender );
-
+spdX+=accX;
+	spdY+=accY;
+	posX+=spdX;
+	posY+=spdY;
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
 
