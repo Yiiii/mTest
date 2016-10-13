@@ -162,12 +162,12 @@ function animatedRender(){
 		if(posX>=100){
 		posX=100;
 		spdX=-spdX;
-		accX=-accx;
+		accX=-accx/5;
 	}
 	else if(posX<=-100){
 		posX=-100;
 		spdX=-spdX;
-		accX=-accx;
+		accX=-accx/5;
 	}
 	if(posY>=100){
 		posY=100;
