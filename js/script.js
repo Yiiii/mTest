@@ -142,12 +142,10 @@ function animatedRender(){
 	//prepare the render
 	requestAnimationFrame( animatedRender );
 	spdX+=accX;
-	// posX+=spdX;
-		posX+=accX;
+	posX+=spdX;
 
 	spdY+=accY;
-	// posY+=spdY;
-		posY+=accY;
+	posY+=spdY;
 
 	// if(posX>=window.innerWidth/2){
 	// 	posX=window.innerWidth/2;
