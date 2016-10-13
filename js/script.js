@@ -182,7 +182,7 @@ function animatedRender(){
 	spriteSphere.position.set(posX,posY,0);
 
 //set camera
-camera.position.set(0,0,1400);
+camera.position.set(0,0,1500);
 
 //render the graphic, yeah!!!
 	renderer.render(scene, camera);
