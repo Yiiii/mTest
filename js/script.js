@@ -142,10 +142,12 @@ function animatedRender(){
 	//prepare the render
 	requestAnimationFrame( animatedRender );
 	spdX+=accX;
-	posX+=spdX;
+	// posX+=spdX;
+		posX+=accX;
 
 	spdY+=accY;
-	posY+=spdY;
+	// posY+=spdY;
+		posY+=accY;
 
 	// if(posX>=window.innerWidth/2){
 	// 	posX=window.innerWidth/2;
@@ -182,7 +184,7 @@ function animatedRender(){
 	spriteSphere.position.set(posX,posY,0);
 
 //set camera
-camera.position.set(0,0,1200);
+camera.position.set(0,0,1000);
 
 //render the graphic, yeah!!!
 	renderer.render(scene, camera);
