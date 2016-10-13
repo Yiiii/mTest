@@ -161,12 +161,12 @@ function animatedRender(){
 //setting boundary
 		if(posX>=100){
 		posX=100;
-		spdX=-spdX;
+		spdX=-spdX/5;
 		accX=-accx/5;
 	}
 	else if(posX<=-100){
 		posX=-100;
-		spdX=-spdX;
+		spdX=-spdX/5;
 		accX=-accx/5;
 	}
 	if(posY>=100){
