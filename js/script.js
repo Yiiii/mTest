@@ -74,8 +74,8 @@ var onDeviceMotion= function(data){
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
 	document.getElementById("mData").innerHTML = mText;
-	accX=data.accelerationIncludingGravity.x*10;
-accY=data.accelerationIncludingGravity.y*10;
+	accX=data.accelerationIncludingGravity.x*100;
+accY=data.accelerationIncludingGravity.y*100;
 }
 
 var Vec3 = function (x,y,z){
