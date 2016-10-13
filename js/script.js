@@ -49,7 +49,7 @@ var spriteGeometry;
 var spriteMaterial;
 var spriteSphere;
 
-var posX=0,posY=0,spd=0, accX=0,accY=0;
+var posX=0,posY=0,spdX=0,spdY=0, accX=0,accY=0;
 //================side function=================
 var onOrientationChange = function(data){
 	console.log('NEW DEVICE ORIENTATION DATA!:');
@@ -131,7 +131,7 @@ function init(){
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
 	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
 	scene.add( spriteSphere );
-	spriteSphere.position.set(accX*10,accY*10,0);
+	spriteSphere.position.set(posX,posY,0);
 
 
 }
@@ -143,7 +143,7 @@ function animatedRender(){
 	requestAnimationFrame( animatedRender );
 
 //move the sprite
-	spriteSphere.position.set(accX*10,accY*10,0);
+	spriteSphere.position.set(posX,posY,0);
 
 //set camera
 camera.position.set(0,0,300);
