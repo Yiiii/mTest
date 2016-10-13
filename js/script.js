@@ -164,7 +164,7 @@ function animatedRender(){
 		spdX=-spdX/2;
 		accX=-accx/5;
 	}
-	else if(posX<=-(100+1){
+	else if(posX<=-(100+1)){
 		posX=-100;
 		spdX=-spdX/2;
 		accX=-accx/5;
@@ -173,7 +173,7 @@ function animatedRender(){
 		posY=100;
 		spdY=-spdY/2;
 		accY=-accY/5;
-	} else if(posY<=-(100+1){
+	} else if(posY<=-(100+1)){
 		posY=-100;
 		spdY=-spdY/2;
 		accY=-accY/5;
