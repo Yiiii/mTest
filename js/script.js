@@ -149,7 +149,7 @@ spdX+=accX;
 	if(posX>=window.innerWidth ||posX<=0 ){
 		accX=-accX;
 	}
-	if(posY>=window.innerWidth ||posY<=0 ){
+	if(posY>=window.innerHeight ||posY<=0 ){
 		accY=-accY;
 	}
 //move the sprite
