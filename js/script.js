@@ -62,7 +62,7 @@ var onOrientationChange = function(data){
 	oscillator.frequency.value= (data.alpha/360)*5000;
 	gainNode.gain.value = .1;
 	console.log("hey");
-	document.getElementById("oData").innerHTML = oText;
+	// document.getElementById("oData").innerHTML = oText;
 };
 
 var latestMdata;
@@ -73,9 +73,9 @@ var onDeviceMotion= function(data){
 	mText += "Acc X :" + data.accelerationIncludingGravity.x + " <br />";
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
-	document.getElementById("mData").innerHTML = mText;
-	accX=data.accelerationIncludingGravity.x;
-accY=data.accelerationIncludingGravity.y;
+	// document.getElementById("mData").innerHTML = mText;
+	accX=data.accelerationIncludingGravity.x*10;
+accY=data.accelerationIncludingGravity.y*10;
 }
 
 var Vec3 = function (x,y,z){
