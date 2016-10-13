@@ -141,7 +141,7 @@ function animatedRender(){
 	requestAnimationFrame( animatedRender );
 
 //move the sprite
-	spriteSphere.position.set(0+spd+accX,0+spd+accY,0);
+	spriteSphere.position.set(posX,posY,0);
 
 //set camera
 camera.position.set(0,0,300);
