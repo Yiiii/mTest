@@ -74,8 +74,8 @@ var onDeviceMotion= function(data){
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
 	document.getElementById("mData").innerHTML = mText;
-	accX=data.accelerationIncludingGravity.x*10;
-accY=data.accelerationIncludingGravity.y*10;
+	accX=data.accelerationIncludingGravity.x*100;
+accY=data.accelerationIncludingGravity.y*100;
 }
 
 var Vec3 = function (x,y,z){
@@ -131,7 +131,7 @@ function init(){
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
 	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
 	scene.add( spriteSphere );
-	spriteSphere.position.set(posX,posY,0);
+	spriteSphere.position.set(accX*10,accY*10,0);
 
 
 }
@@ -143,7 +143,7 @@ function animatedRender(){
 	requestAnimationFrame( animatedRender );
 
 //move the sprite
-	spriteSphere.position.set(posX,posY,0);
+	spriteSphere.position.set(accX*10,accY*10,0);
 
 //set camera
 camera.position.set(0,0,300);
