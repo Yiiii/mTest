@@ -141,9 +141,10 @@ function init(){
 function animatedRender(){
 	//prepare the render
 	requestAnimationFrame( animatedRender );
-spdX+=accX;
-	spdY+=accY;
+	spdX+=accX;
 	posX+=spdX;
+	
+	spdY+=accY;
 	posY+=spdY;
 
 	// if(posX>=window.innerWidth/2){
@@ -164,11 +165,11 @@ spdX+=accX;
 	else if(posX<=-100){
 		posX=-100;
 	}
-	if(posY>=100){
-		posY=100;
-	} else if(posY<=-100){
-		posY=-100;
-	}
+	// if(posY>=100){
+	// 	posY=100;
+	// } else if(posY<=-100){
+	// 	posY=-100;
+	// }
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
 
