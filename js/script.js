@@ -49,7 +49,7 @@ var spriteGeometry;
 var spriteMaterial;
 var spriteSphere;
 
-var spd=0, accX=0,accY=0;
+var posX=0,posY=0,spd=10, accX=0,accY=0;
 //================side function=================
 var onOrientationChange = function(data){
 	console.log('NEW DEVICE ORIENTATION DATA!:');
@@ -70,7 +70,7 @@ var onDeviceMotion= function(data){
 	console.log(data);
 	latestMdata=data;
 	var mText = "MOTION DATA: <br />";
-	mText += "Acc X :" + data.accelerationIncludingGravity.x + " <br />";
+	mText += "Acc X 03:" + data.accelerationIncludingGravity.x + " <br />";
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
 	document.getElementById("mData").innerHTML = mText;
@@ -128,7 +128,9 @@ function init(){
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
 	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
 	scene.add( spriteSphere );
-	spriteSphere.position.set(0+spd+accX,0+spd+accY,0);
+	spriteSphere.position.set(posX,posY,0);
+	posX=posX+spd+accX;
+	posY=posY+spd+accY;
 
 }
 //=================SETUP() OVER================
@@ -139,7 +141,7 @@ function animatedRender(){
 	requestAnimationFrame( animatedRender );
 
 //move the sprite
-	spriteSphere.position.set(0+spd+accX,0+spd+accY,0);
+	spriteSphere.position.set(posX,posY);
 
 //set camera
 camera.position.set(0,0,300);
