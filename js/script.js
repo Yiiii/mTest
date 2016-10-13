@@ -149,7 +149,7 @@ spdX+=accX;
 	if(posX>=window.innerWidth/2){
 		posX=window.innerWidth/2;
 	}
-	else if(posX<=(-window.innerWidth/2){
+	else if(posX<=(-window.innerWidth/2)){
 		posX=-window.innerWidth/2;
 	}
 	if(posY>=window.innerHeight){
