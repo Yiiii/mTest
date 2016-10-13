@@ -146,11 +146,16 @@ spdX+=accX;
 	posX+=spdX;
 	posY+=spdY;
 
-	if(posX>=window.innerWidth ||posX<=0 ){
-		accX=-accX;
+	if(posX>=window.innerWidth){
+		posX=window.innerWidth;
 	}
-	if(posY>=window.innerHeight ||posY<=0 ){
-		accY=-accY;
+	else if(posX<=0){
+		posX=0;
+	}
+	if(posY>=window.innerHeight){
+		accY=window.innerHeight;
+	} else if(posY<=0){
+		posY=0
 	}
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
