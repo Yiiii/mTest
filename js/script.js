@@ -49,7 +49,7 @@ var spriteGeometry;
 var spriteMaterial;
 var spriteSphere;
 
-var posX=0,posY=0,spd=1, accX=1,accY=1;
+var posX=0,posY=0,spd=1, accX=0,accY=0;
 //================side function=================
 var onOrientationChange = function(data){
 	console.log('NEW DEVICE ORIENTATION DATA!:');
