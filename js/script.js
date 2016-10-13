@@ -145,6 +145,10 @@ spdX+=accX;
 	spdY+=accY;
 	posX+=spdX;
 	posY+=spdY;
+
+	if(posX>=window.innerWidth ||posX<=0 ){
+		accX=-accX;
+	}
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
 
