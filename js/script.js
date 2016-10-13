@@ -69,8 +69,8 @@ var latestMdata;
 var onDeviceMotion= function(data){
 	console.log(data);
 	latestMdata=data;
-	var mText = "MOTION DATA: <br />";
-	mText += "Acc X 10:" + data.accelerationIncludingGravity.x + " <br />";
+	var mText = "MOTION DATA 10: <br />";
+	mText += "Acc X :" + data.accelerationIncludingGravity.x + " <br />";
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
 	document.getElementById("mData").innerHTML = mText;
@@ -122,13 +122,14 @@ function init(){
 	//add an ambient light
 	var ambientLight = new THREE.AmbientLight(0x404040,2.4);
 	scene.add(ambientLight);
-
+	posX=spd+accX;
+	posY=spd+accY;
 	//init the sphere sprite, aha
 	spriteGeometry = new THREE.SphereGeometry( 30, 40, 40 );
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
 	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
 	scene.add( spriteSphere );
-	spriteSphere.position.set(0+spd+accX,0+spd+accY,0);
+	spriteSphere.position.set(posX,posY,0);
 
 
 }
