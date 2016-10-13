@@ -146,16 +146,28 @@ spdX+=accX;
 	posX+=spdX;
 	posY+=spdY;
 
-	if(posX>=window.innerWidth/2){
-		posX=window.innerWidth/2;
+	// if(posX>=window.innerWidth/2){
+	// 	posX=window.innerWidth/2;
+	// }
+	// else if(posX<=(-window.innerWidth/2)){
+	// 	posX=-window.innerWidth/2;
+	// }
+	// if(posY>=window.innerHeight){
+	// 	accY=window.innerHeight;
+	// } else if(posY<=0){
+	// 	posY=0
+	// }
+
+		if(posX>=100){
+		posX=100;
 	}
-	else if(posX<=(-window.innerWidth/2)){
-		posX=-window.innerWidth/2;
+	else if(posX<=-100){
+		posX=-100;
 	}
-	if(posY>=window.innerHeight){
-		accY=window.innerHeight;
-	} else if(posY<=0){
-		posY=0
+	if(posY>=100){
+		posY=100;
+	} else if(posY<=-100){
+		posY=-100;
 	}
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
