@@ -151,12 +151,12 @@ function animatedRender(){
 //setting boundary
 		if(posX>=window.innerWidth/2+1){
 		posX=window.innerWidth/2;
-		spdX=-spdX/5;
+		spdX=-spdX/2;
 		accX=-accx*1.5;
 	}
 	else if(posX<=-(window.innerWidth/2+1)){
 		posX=-window.innerWidth/2;
-		spdX=-spdX/5;
+		spdX=-spdX/2;
 		accX=-accx*1.5;
 	}
 	if(posY>=window.innerHeight/2+1){
