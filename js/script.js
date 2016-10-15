@@ -10,7 +10,10 @@ window.addEventListener('touchstart', function() {
 	// play the file
 	source.noteOn(0);
 }, false);
-
+//
+var width=window.innerWidth;
+var height= window.innerHeight;
+console.log(width+","+height);
 //audio preparation
 var audioCtx= new (window.AudioContext||window.webkitAudioContext);
 var oscillator = audioCtx.createOscillator();
@@ -27,16 +30,16 @@ gainNode.connect(audioCtx.destination);
 
 //make a new camera
 var viewAngle = 75;
-var aspectRatio = window.innerWidth / window.innerHeight;
+var aspectRatio = width / height;
 var near = 0.1;
 var far = 80000;
-var camera = new THREE.PerspectiveCamera(viewAngle, aspectRatio, near, far);
-
+// var camera = new THREE.PerspectiveCamera(viewAngle, aspectRatio, near, far);
+var camera = new THREE.OrthographicCamera ((width / - 1.5), width / 1.5, height / 1.5, height / - 1.5, near, far);
 //create a new scene
 var scene = new THREE.Scene();
 //prepare the rendering
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(width, height);
 document.body.appendChild(renderer.domElement);
 
 //change the whole space color
@@ -49,12 +52,21 @@ var spriteGeometry;
 var spriteMaterial;
 var spriteSphere;
 
+//destination preparation
+var desGeometry;
+var desMaterial;
+var desSphere;
+
 var posX=0,posY=0,spdX=0,spdY=0, accX=0,accY=0;
 //================side function=================
 var onOrientationChange = function(data){
 	console.log('NEW DEVICE ORIENTATION DATA!:');
 	console.log(data);
 	var oText = "ORIENTATION DATA: <br />";
+	oText+=width;
+	oText+=",";
+	oText+=height;
+	oText+=" <br />";
 	oText += "Alpha (Yaw): " + data.alpha + " <br />";
 	oText += "Beta (Pitch): " + data.beta + " <br />";
 	oText += "Gamma (Roll): " + data.gamma + " <br />";
@@ -83,14 +95,14 @@ var Vec3 = function (x,y,z){
 };
 
 function onDocumentMouseMove(event){
-	mouseX = (event.clientX - window.innerWidth/2);
-	mouseY = (event.clientY -window.innerHeight/2);
+	mouseX = (event.clientX - width/2);
+	mouseY = (event.clientY -height/2);
 }
 
 function onWindowResize(){
-	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.aspect = width / height;
 	camera.updateProjectionMatrix();
-	renderer.setSize(window.innerWidth, window.innerHeight);
+	renderer.setSize(width, height);
 }
 
 //if this browser / device can detect device orientation events...
@@ -126,6 +138,15 @@ function init(){
 	spdY+=accY;
 	posX+=spdX/2;
 	posY+=spdY/2;
+
+	//init the destination
+	desGeometry = new THREE.SphereGeometry( 50, 6, 6 );
+	desMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043, wireframe: true} );
+	desSphere = new THREE.Mesh( desGeometry, desMaterial );
+	scene.add( desSphere );
+	desSphere.position.set(-width+500,height/2,0);
+
+
 	//init the sphere sprite, aha
 	spriteGeometry = new THREE.SphereGeometry( 30, 40, 40 );
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
@@ -142,6 +163,10 @@ function animatedRender(){
 	//prepare the render
 	requestAnimationFrame( animatedRender );
 	
+//rotate the destination sphere
+desSphere.rotation.x += 0.005;
+desSphere.rotation.x  += 0.01;
+
 //initial the movement of sprite
 	spdX+=accX;
 	posX+=spdX;
@@ -149,22 +174,22 @@ function animatedRender(){
 	posY+=spdY;
 
 //setting boundary
-		if(posX>=window.innerWidth/2+1){
-		posX=window.innerWidth/2;
+		if(posX>=width/2+1){
+		posX=width/2;
 		spdX=-spdX/4;
 		accX=-accx/2;
 	}
-	else if(posX<=-(window.innerWidth/2+1)){
-		posX=-window.innerWidth/2;
+	else if(posX<=-(width/2+1)){
+		posX=-width/2;
 		spdX=-spdX/4;
 		accX=-accx/2;
 	}
-	if(posY>=window.innerHeight/2+1){
-		posY=window.innerHeight/2;
+	if(posY>=height/2+1){
+		posY=height/2;
 		spdY=-spdY/4;
 		accY=-accY/2;
-	} else if(posY<=-(window.innerHeight/2+1)){
-		posY=-window.innerHeight/2;
+	} else if(posY<=-(height/2+1)){
+		posY=-height/2;
 		spdY=-spdY/4;
 		accY=-accY/2;
 	}
@@ -173,7 +198,8 @@ function animatedRender(){
 	spriteSphere.position.set(posX,posY,0);
 
 //set camera
-camera.position.set(0,0,1000);
+// camera.position.set(0,0,1000);
+camera.position.set(0,0,2500);
 
 //render the graphic, yeah!!!
 	renderer.render(scene, camera);
