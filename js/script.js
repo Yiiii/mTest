@@ -151,22 +151,22 @@ function animatedRender(){
 //setting boundary
 		if(posX>=window.innerWidth/2+1){
 		posX=window.innerWidth/2;
-		spdX=-spdX/2;
-		accX=-accx/5;
+		spdX=-spdX/5;
+		accX=-accx/2;
 	}
 	else if(posX<=-(window.innerWidth/2+1)){
 		posX=-window.innerWidth/2;
-		spdX=-spdX/2;
-		accX=-accx/5;
+		spdX=-spdX/5;
+		accX=-accx/2;
 	}
 	if(posY>=window.innerHeight/2+1){
 		posY=window.innerHeight/2;
-		spdY=-spdY/2;
-		accY=-accY/5;
+		spdY=-spdY/5;
+		accY=-accY/2;
 	} else if(posY<=-(window.innerHeight/2+1)){
 		posY=-window.innerHeight/2;
-		spdY=-spdY/2;
-		accY=-accY/5;
+		spdY=-spdY/5;
+		accY=-accY/2;
 	}
 
 //move the sprite
