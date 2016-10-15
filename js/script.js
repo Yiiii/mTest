@@ -62,7 +62,7 @@ var onOrientationChange = function(data){
 	oscillator.frequency.value= (data.alpha/360)*5000;
 	gainNode.gain.value = .1;
 	console.log("hey");
-	// document.getElementById("oData").innerHTML = oText;
+	document.getElementById("oData").innerHTML = oText;
 };
 
 var latestMdata;
@@ -73,7 +73,7 @@ var onDeviceMotion= function(data){
 	mText += "Acc X :" + data.accelerationIncludingGravity.x + " <br />";
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
-	// document.getElementById("mData").innerHTML = mText;
+	document.getElementById("mData").innerHTML = mText;
 	accX=data.accelerationIncludingGravity.x/4;
 accY=data.accelerationIncludingGravity.y/4;
 }
@@ -151,12 +151,12 @@ function animatedRender(){
 //setting boundary
 		if(posX>=window.innerWidth/2+1){
 		posX=window.innerWidth/2;
-		spdX=-spdX/3;
+		spdX=-spdX/2;
 		accX=-accx/2;
 	}
 	else if(posX<=-(window.innerWidth/2+1)){
 		posX=-window.innerWidth/2;
-		spdX=-spdX/3;
+		spdX=-spdX/2;
 		accX=-accx/2;
 	}
 	if(posY>=window.innerHeight/2+1){
