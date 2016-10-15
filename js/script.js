@@ -74,8 +74,8 @@ var onDeviceMotion= function(data){
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.accelerationIncludingGravity.z + " <br />";
 	// document.getElementById("mData").innerHTML = mText;
-	accX=data.accelerationIncludingGravity.x/8;
-accY=data.accelerationIncludingGravity.y/8;
+	accX=data.accelerationIncludingGravity.x/10;
+accY=data.accelerationIncludingGravity.y/10;
 }
 
 var Vec3 = function (x,y,z){
@@ -141,23 +141,13 @@ function init(){
 function animatedRender(){
 	//prepare the render
 	requestAnimationFrame( animatedRender );
+	
+//initial the movement of sprite
 	spdX+=accX;
 	posX+=spdX;
-
 	spdY+=accY;
 	posY+=spdY;
 
-	// if(posX>=window.innerWidth/2){
-	// 	posX=window.innerWidth/2;
-	// }
-	// else if(posX<=(-window.innerWidth/2)){
-	// 	posX=-window.innerWidth/2;
-	// }
-	// if(posY>=window.innerHeight/2){
-	// 	accY=window.innerHeight;
-	// } else if(posY<=0){
-	// 	posY=0
-	// }
 //setting boundary
 		if(posX>=window.innerWidth/2+1){
 		posX=window.innerWidth/2;
@@ -178,6 +168,7 @@ function animatedRender(){
 		spdY=-spdY/2;
 		accY=-accY/5;
 	}
+
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
 
