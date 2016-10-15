@@ -124,8 +124,8 @@ function init(){
 	scene.add(ambientLight);
 	spdX+=accX;
 	spdY+=accY;
-	posX+=spdX;
-	posY+=spdY;
+	posX+=spdX/2;
+	posY+=spdY/2;
 	//init the sphere sprite, aha
 	spriteGeometry = new THREE.SphereGeometry( 30, 40, 40 );
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
@@ -151,21 +151,21 @@ function animatedRender(){
 //setting boundary
 		if(posX>=window.innerWidth/2+1){
 		posX=window.innerWidth/2;
-		spdX=-spdX/2;
+		spdX=-spdX/4;
 		accX=-accx/2;
 	}
 	else if(posX<=-(window.innerWidth/2+1)){
 		posX=-window.innerWidth/2;
-		spdX=-spdX/2;
+		spdX=-spdX/4;
 		accX=-accx/2;
 	}
 	if(posY>=window.innerHeight/2+1){
 		posY=window.innerHeight/2;
-		spdY=-spdY/5;
+		spdY=-spdY/4;
 		accY=-accY/2;
 	} else if(posY<=-(window.innerHeight/2+1)){
 		posY=-window.innerHeight/2;
-		spdY=-spdY/5;
+		spdY=-spdY/4;
 		accY=-accY/2;
 	}
 
