@@ -152,12 +152,12 @@ function animatedRender(){
 		if(posX>=window.innerWidth/2+1){
 		posX=window.innerWidth/2;
 		spdX=-spdX/5;
-		accX=-accx;
+		accX=-accx*1.5;
 	}
 	else if(posX<=-(window.innerWidth/2+1)){
 		posX=-window.innerWidth/2;
 		spdX=-spdX/5;
-		accX=-accx;
+		accX=-accx*1.5;
 	}
 	if(posY>=window.innerHeight/2+1){
 		posY=window.innerHeight/2;
