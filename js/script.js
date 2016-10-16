@@ -220,7 +220,7 @@ hitTime++;
 if(hit){
 	posX=desPosX;
 	posY=desPosY;
-	spriteSize=100;
+	spriteSize=50;
 	mText += "HIT";
 }
 
