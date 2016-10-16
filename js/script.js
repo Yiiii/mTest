@@ -48,16 +48,22 @@ console.log(skyColor);
 renderer.setClearColor(skyColor,1);
 
 //sprite preparation
+var spriteSize=30;
 var spriteGeometry;
 var spriteMaterial;
 var spriteSphere;
-
+var posX=0,posY=0,spdX=0,spdY=0, accX=0,accY=0;
 //destination preparation
+var desSize=50;
 var desGeometry;
 var desMaterial;
 var desSphere;
+var desPosX=-width*(1/2-1/10),desPosY=height*(1/2-1/10);
+//hitrule preparation
+var hit=false;
+var hitTime=0;
 
-var posX=0,posY=0,spdX=0,spdY=0, accX=0,accY=0;
+
 //================side function=================
 var onOrientationChange = function(data){
 	console.log('NEW DEVICE ORIENTATION DATA!:');
@@ -140,15 +146,15 @@ function init(){
 	posY+=spdY/2;
 
 	//init the destination
-	desGeometry = new THREE.SphereGeometry( 50, 6, 6 );
+	desGeometry = new THREE.SphereGeometry( desSize, 10, 10 );
 	desMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043, wireframe: true} );
 	desSphere = new THREE.Mesh( desGeometry, desMaterial );
 	scene.add( desSphere );
-	desSphere.position.set(-width+500,height/2,0);
+	desSphere.position.set(desPosX,desPosY,0);
 
 
 	//init the sphere sprite, aha
-	spriteGeometry = new THREE.SphereGeometry( 30, 40, 40 );
+	spriteGeometry = new THREE.SphereGeometry( spriteSize, 40, 40 );
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
 	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
 	scene.add( spriteSphere );
@@ -193,6 +199,23 @@ desSphere.rotation.x  += 0.01;
 		spdY=-spdY/4;
 		accY=-accY/2;
 	}
+//check if the sprite hit the destination
+if(posX>desPosX-20 && posX<desPosX+20 && posY>desPosY-20 && posY<desPosY+20){
+hitTime++;
+	if(hitTime>300){
+		hit=true;
+	}
+} else {
+	hitTime=0;
+}
+//hit effect
+if(hit){
+	posX=desPosX;
+	posY=desPosY;
+	spriteSize+=0.01;
+}
+
+
 
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
