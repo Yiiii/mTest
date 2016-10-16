@@ -140,6 +140,7 @@ function createSprite(){
 	spriteGeometry = new THREE.SphereGeometry( spriteSize, 40, 40 );
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
 	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
+	spriteSphere.updateMatrix();
 	scene.add( spriteSphere );
 	spriteSphere.position.set(posX,posY,0);
 }
@@ -223,7 +224,7 @@ if(hit){
 	spriteSize+=1;
 }
 spriteSize+=1;
-spriteSphere.updateMatrix();
+
 
 
 //move the sprite
