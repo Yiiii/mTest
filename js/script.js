@@ -221,6 +221,7 @@ if(hit){
 	posX=desPosX;
 	posY=desPosY;
 	spriteSize+=100;
+	mText += "HIT";
 }
 
 
