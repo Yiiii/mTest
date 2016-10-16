@@ -222,6 +222,7 @@ if(hit){
 	posY=desPosY;
 	spriteSize+=1;
 }
+spriteSize+=1;
 spriteSphere.updateMatrix();
 
 
