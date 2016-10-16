@@ -93,7 +93,9 @@ var onDeviceMotion= function(data){
 	mText += "Acc Z : " + data.acceleration.z + " <br />";
 	document.getElementById("mData").innerHTML = mText;
 	accX=data.accelerationIncludingGravity.x/4;
-accY=data.accelerationIncludingGravity.y/4;
+	accY=data.accelerationIncludingGravity.y/4;
+
+
 }
 
 var Vec3 = function (x,y,z){
@@ -124,6 +126,24 @@ window.addEventListener("devicemotion",onDeviceMotion,false);
 } else{
 	console.log("error: no motion data!");
 }
+
+function createDes(){
+		//init the destination
+	desGeometry = new THREE.SphereGeometry( desSize, 10, 10 );
+	desMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043, wireframe: true} );
+	desSphere = new THREE.Mesh( desGeometry, desMaterial );
+	scene.add( desSphere );
+	desSphere.position.set(desPosX,desPosY,0);
+}
+function createSprite(){
+//init the sphere sprite, aha
+	spriteGeometry = new THREE.SphereGeometry( spriteSize, 40, 40 );
+	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
+	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
+	scene.add( spriteSphere );
+	spriteSphere.position.set(posX,posY,0);
+}
+
 //================side function OVER=================
 
 //=================SETUP()================
@@ -145,21 +165,8 @@ function init(){
 	posX+=spdX/2;
 	posY+=spdY/2;
 
-	//init the destination
-	desGeometry = new THREE.SphereGeometry( desSize, 10, 10 );
-	desMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043, wireframe: true} );
-	desSphere = new THREE.Mesh( desGeometry, desMaterial );
-	scene.add( desSphere );
-	desSphere.position.set(desPosX,desPosY,0);
-
-
-	//init the sphere sprite, aha
-	spriteGeometry = new THREE.SphereGeometry( spriteSize, 40, 40 );
-	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
-	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
-	scene.add( spriteSphere );
-	spriteSphere.position.set(posX,posY,0);
-
+createSprite();
+createDes();
 
 }
 //=================SETUP() OVER================
@@ -213,7 +220,7 @@ hitTime++;
 if(hit){
 	posX=desPosX;
 	posY=desPosY;
-	spriteSize+=0.01;
+	spriteSize+=100;
 }
 
 
