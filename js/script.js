@@ -207,22 +207,30 @@ desSphere.rotation.x  += 0.01;
 		accY=-accY/2;
 	}
 //check if the sprite hit the destination
+if(hit==false){
 if(posX>desPosX-20 && posX<desPosX+20 && posY>desPosY-20 && posY<desPosY+20){
-hitTime++;
+// hitTime++;
 	// if(hitTime>300){
 	// 	hit=true;
 	// }
-	hit=true;
+	// hit=true;
+	// if(hit){
+	posX=desPosX;
+	posY=desPosY;
+	spriteSize++;
+	mText += "HIT";
+// }
 } else {
 	hitTime=0;
 }
-//hit effect
-if(hit){
-	posX=desPosX;
-	posY=desPosY;
-	spriteSize=50;
-	mText += "HIT";
 }
+//hit effect
+// if(hit){
+// 	posX=desPosX;
+// 	posY=desPosY;
+// 	spriteSize=50;
+// 	mText += "HIT";
+// }
 
 
 
