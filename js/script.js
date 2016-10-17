@@ -174,14 +174,14 @@ function hitEffect(){
 	spriteSphere.scale.z += 0.5;
 //when scale is 80, change the challenge setting, 
 //when it reaches 120, sprite appear in the center agein
-	if(spriteSphere.scale.x==80){
+	if(spriteSphere.scale.x==70){
 		clg++;
 		desPosX=clgArrList[clg][0];
 		desPosY=clgArrList[clg][1];
 		desPosZ=clgArrList[clg][2];
 		desSphere.position.set(desPosX,desPosY,desPosZ);
 	}
-	if(spriteSphere.scale.x==200){
+	if(spriteSphere.scale.x==100){
 		hit=false;
 		spriteSphere.scale.set(1,1,1);
 		posX=0;
