@@ -47,18 +47,7 @@ var skyColor = new THREE.Color( 0.4549019607843137, 0.4196078431372549, 0.454901
 console.log(skyColor);
 renderer.setClearColor(skyColor,1);
 
-//sprite preparation
-var spriteSize=30;
-var spriteGeometry;
-var spriteMaterial;
-var spriteSphere;
-var posX=0,posY=0,spdX=0,spdY=0, accX=0,accY=0;
-//destination preparation
-var desSize=50;
-var desGeometry;
-var desMaterial;
-var desSphere;
-var desPosX=-width*(1/2-1/10),desPosY=height*(1/2-1/10),desPosZ=0;
+
 //hitrule preparation
 var hit=false;
 var hitTime=0;
@@ -73,6 +62,20 @@ var clgArrList=[
 [width/2-200,0,0, 2 , 0 ],
 [-width*(1/2-1/10),-height*(1/2-1/10),0, 2 , 1 ]
 ];
+
+//sprite preparation
+var spriteSize=30;
+var spriteGeometry;
+var spriteMaterial;
+var spriteSphere;
+var posX=0,posY=0,spdX=0,spdY=0, accX=0,accY=0;
+
+//destination preparation
+var desSize=50;
+var desGeometry;
+var desMaterial;
+var desSphere;
+var desPosX=clgArrList[clg][0], desPosY=clgArrList[clg][1],desPosZ=clgArrList[clg][2];
 
 //================side function=================
 var onOrientationChange = function(data){
@@ -166,7 +169,7 @@ function hitEffect(){
 //when it reaches 120, sprite appear in the center agein
 	if(spriteSphere.scale.x==80){
 		clg++;
-		desSphere.position.set(clgArrList[clg][0],clgArrList[clg][1],clgArrList[clg][2]);
+		desSphere.position.set(desPosX,desPosY,desPosZ);
 	}
 	if(spriteSphere.scale.x==125){
 		hit=false;
@@ -197,7 +200,7 @@ function init(){
 	posY+=spdY/2;
 
 createSprite(spriteSize);
-createDes(clgArrList[clg][0],clgArrList[clg][1],clgArrList[clg][2]);
+createDes(desPosX,desPosY,desPosZ);
 
 }
 //=================SETUP() OVER================
@@ -238,10 +241,10 @@ desSphere.rotation.x  += 0.01;
 		accY=-accY/2;
 	}
 //check if the sprite hit the destination
-if(posX>clgArrList[clg][0]-20 
-	&& posX<clgArrList[clg][0]+20 
-	&& posY>clgArrList[clg][1]-20 
-	&& posY<clgArrList[clg][1]+20)
+if(posX>desPosX-20 
+	&& posX<desPosX+20 
+	&& posY>desPosY-20 
+	&& posY<desPosY+20)
 {
 	hitTime++;
 	hit=true;
