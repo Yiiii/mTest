@@ -60,7 +60,7 @@ var desMaterial;
 var desSphere;
 var desPosX=-width*(1/2-1/10),desPosY=height*(1/2-1/10),desPosZ=0;
 //hitrule preparation
-var hit=true;
+var hit=false;
 var hitTime=0;
 
 //challenge preparation
@@ -165,16 +165,14 @@ function hitEffect(){
 //when scale is 80, change the challenge setting, 
 //when it reaches 120, sprite appear in the center agein
 	if(spriteSphere.scale.x==80){
-		desPosX=width/2-200;
-		desPosY=0;
-		desSphere.position.set(desPosX,desPosY,0);
+		clg++;
+		desSphere.position.set(clgArrList[clg][0],clgArrList[clg][1],clgArrList[clg][2]);
 	}
 	if(spriteSphere.scale.x==125){
 		hit=false;
 		spriteSphere.scale.set(1,1,1);
 		posX=0;
 		posY=0;
-		clg++;
 	}
 }
 //================side function OVER=================
@@ -251,6 +249,7 @@ if(hit){
 hitEffect();
 }
 console.log(hitTime);
+
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
 
