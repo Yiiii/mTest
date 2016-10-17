@@ -60,7 +60,7 @@ var desMaterial;
 var desSphere;
 var desPosX=-width*(1/2-1/10),desPosY=height*(1/2-1/10);
 //hitrule preparation
-var hit=false;
+var hit=true;
 var hitTime=0;
 
 
@@ -135,9 +135,9 @@ function createDes(){
 	scene.add( desSphere );
 	desSphere.position.set(desPosX,desPosY,0);
 }
-function createSprite(){
+function createSprite(sprS){
 //init the sphere sprite, aha
-	spriteGeometry = new THREE.SphereGeometry( spriteSize, 40, 40 );
+	spriteGeometry = new THREE.SphereGeometry( sprS, 40, 40 );
 	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
 	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
 	scene.add( spriteSphere );
@@ -165,7 +165,7 @@ function init(){
 	posX+=spdX/2;
 	posY+=spdY/2;
 
-createSprite();
+createSprite(spriteSize);
 createDes();
 
 }
@@ -220,10 +220,25 @@ hitTime++;
 if(hit){
 	posX=desPosX;
 	posY=desPosY;
-	spriteSize+=1;
+	//enlarge the sprite
+	spriteSphere.scale.x += 0.5;
+	spriteSphere.scale.y += 0.5;
+	spriteSphere.scale.z += 0.5;
+//when scale is 80, change the challenge setting, 
+//when it reaches 120, sprite appear in the center agein
+	if(spriteSphere.scale.x==80){
+		desPosX=width/2-200;
+		desPosY=0;
+		desSphere.position.set(desPosX,desPosY,0);
+	}
+	if(spriteSphere.scale.x==125){
+		hit=false;
+		spriteSphere.scale.set(1,1,1);
+		posX=0;
+		posY=0;
+	}
 }
-spriteSize+=1;
-spriteSphere.updateMatrix();
+
 
 
 //move the sprite
