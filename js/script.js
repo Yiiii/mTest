@@ -168,15 +168,18 @@ function createSprite(sprS){
 
 function hitEffect(){
 	//hit effect
-	posX=desPosX;
-	posY=desPosY;
+spdX=0;
+spdY=0;
+posX+=spdX;
+posY+=spdY;
+
 	//enlarge the sprite
 	spriteSphere.scale.x += 0.5;
 	spriteSphere.scale.y += 0.5;
 	spriteSphere.scale.z += 0.5;
 //when scale is 80, change the challenge setting, 
 //when it reaches 120, sprite appear in the center agein
-	if(spriteSphere.scale.x==10){
+	if(spriteSphere.scale.x>10){
 				desMaterial.opacity=0;
 	}
 	if(spriteSphere.scale.x==50){
@@ -186,12 +189,13 @@ function hitEffect(){
 		desPosZ=clgArrList[clg][2];
 		desSphere.position.set(desPosX,desPosY,desPosZ);
 	}
-	if(spriteSphere.scale.x==150){
+	if(spriteSphere.scale.x==120){
 		hit=false;
 		spriteSphere.scale.set(1,1,1);
 		posX=0;
 		posY=0;
 		spriteMaterial.opacity=0;
+		desMaterial.opacity=0;
 	}
 }
 //================side function OVER=================
@@ -227,8 +231,8 @@ function animatedRender(){
 	requestAnimationFrame( animatedRender );
 	
 //rotate the destination sphere
-desSphere.rotation.x += 0.02;
-desSphere.rotation.x  += 0.02;
+desSphere.rotation.x += 0.03;
+desSphere.rotation.x  += 0.03;
 
 //initial the movement of sprite
 	spdX+=accX;
@@ -274,8 +278,6 @@ if(spriteMaterial.opacity<1){
 if(desMaterial.opacity<1){
 	desMaterial.opacity+=0.02;
 }
-console.log(desPosX);
-console.log(clg);
 if(hit){
 hitEffect();
 }
