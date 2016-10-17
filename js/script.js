@@ -214,7 +214,7 @@ function animatedRender(){
 	requestAnimationFrame( animatedRender );
 	
 //rotate the destination sphere
-desSphere.rotation.x += 0.005;
+desSphere.rotation.x += 0.01;
 desSphere.rotation.x  += 0.01;
 
 //initial the movement of sprite
