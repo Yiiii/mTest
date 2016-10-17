@@ -58,11 +58,21 @@ var desSize=50;
 var desGeometry;
 var desMaterial;
 var desSphere;
-var desPosX=-width*(1/2-1/10),desPosY=height*(1/2-1/10);
+var desPosX=-width*(1/2-1/10),desPosY=height*(1/2-1/10),desPosZ=0;
 //hitrule preparation
 var hit=true;
 var hitTime=0;
 
+//challenge preparation
+var clg=0;
+//challenge is i-1;
+//desX,desY,deadPoints,b-board
+ElementInsideEachArrayList:
+var clgArrList=[
+[-width*(1/2-1/10),desPosY=height*(1/2-1/10),0, 0 , 0 ],
+[width/2-200,0,0, 2 , 0 ],
+[-width*(1/2-1/10),desPosY=height*(1/2-1/10),0, 2 , 1 ]
+];
 
 //================side function=================
 var onOrientationChange = function(data){
@@ -127,13 +137,13 @@ window.addEventListener("devicemotion",onDeviceMotion,false);
 	console.log("error: no motion data!");
 }
 
-function createDes(){
+function createDes(x,y,z){
 		//init the destination
 	desGeometry = new THREE.SphereGeometry( desSize, 10, 10 );
 	desMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043, wireframe: true} );
 	desSphere = new THREE.Mesh( desGeometry, desMaterial );
 	scene.add( desSphere );
-	desSphere.position.set(desPosX,desPosY,0);
+	desSphere.position.set(x,y,z);
 }
 function createSprite(sprS){
 //init the sphere sprite, aha
@@ -144,6 +154,29 @@ function createSprite(sprS){
 	spriteSphere.position.set(posX,posY,0);
 }
 
+function hitEffect(){
+	//hit effect
+	posX=desPosX;
+	posY=desPosY;
+	//enlarge the sprite
+	spriteSphere.scale.x += 0.5;
+	spriteSphere.scale.y += 0.5;
+	spriteSphere.scale.z += 0.5;
+//when scale is 80, change the challenge setting, 
+//when it reaches 120, sprite appear in the center agein
+	if(spriteSphere.scale.x==80){
+		desPosX=width/2-200;
+		desPosY=0;
+		desSphere.position.set(desPosX,desPosY,0);
+	}
+	if(spriteSphere.scale.x==125){
+		hit=false;
+		spriteSphere.scale.set(1,1,1);
+		posX=0;
+		posY=0;
+		clg++;
+	}
+}
 //================side function OVER=================
 
 //=================SETUP()================
@@ -152,7 +185,7 @@ function init(){
 	//things need to be put, the mouse moving function, and window resize function
 	document.addEventListener('mousemove', onDocumentMouseMove, false);
 	window.addEventListener('resize', onWindowResize, false);
-	
+	console.log(clgArrList);
 	// create and add a working-in-process light
 	var pointLight = new THREE.PointLight(0xFFFFFF);
 	pointLight.position.set(10,50,200)
@@ -166,7 +199,7 @@ function init(){
 	posY+=spdY/2;
 
 createSprite(spriteSize);
-createDes();
+createDes(clgArrList[clg][0],clgArrList[clg][1],clgArrList[clg][2]);
 
 }
 //=================SETUP() OVER================
@@ -208,39 +241,16 @@ desSphere.rotation.x  += 0.01;
 	}
 //check if the sprite hit the destination
 if(posX>desPosX-20 && posX<desPosX+20 && posY>desPosY-20 && posY<desPosY+20){
-hitTime++;
-	// if(hitTime>300){
-	// 	hit=true;
-	// }
+	hitTime++;
 	hit=true;
 } else {
 	hitTime=0;
 }
-//hit effect
+
 if(hit){
-	posX=desPosX;
-	posY=desPosY;
-	//enlarge the sprite
-	spriteSphere.scale.x += 0.5;
-	spriteSphere.scale.y += 0.5;
-	spriteSphere.scale.z += 0.5;
-//when scale is 80, change the challenge setting, 
-//when it reaches 120, sprite appear in the center agein
-	if(spriteSphere.scale.x==80){
-		desPosX=width/2-200;
-		desPosY=0;
-		desSphere.position.set(desPosX,desPosY,0);
-	}
-	if(spriteSphere.scale.x==125){
-		hit=false;
-		spriteSphere.scale.set(1,1,1);
-		posX=0;
-		posY=0;
-	}
+hitEffect();
 }
-
-
-
+console.log(hitTime);
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
 
