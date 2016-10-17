@@ -150,7 +150,8 @@ window.addEventListener("devicemotion",onDeviceMotion,false);
 function createDes(x,y,z){
 		//init the destination
 	desGeometry = new THREE.SphereGeometry( desSize, 10, 10 );
-	desMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043, wireframe: true} );
+	desMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043, transparent: true,wireframe: true} );
+	desMaterial.opacity=0;
 	desSphere = new THREE.Mesh( desGeometry, desMaterial );
 	scene.add( desSphere );
 	desSphere.position.set(x,y,z);
@@ -158,7 +159,8 @@ function createDes(x,y,z){
 function createSprite(sprS){
 //init the sphere sprite, aha
 	spriteGeometry = new THREE.SphereGeometry( sprS, 40, 40 );
-	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043} );
+	spriteMaterial = new THREE.MeshLambertMaterial ( {color: 0xF95043,transparent: true} );
+	spriteMaterial.opacity=0;
 	spriteSphere = new THREE.Mesh( spriteGeometry, spriteMaterial );
 	scene.add( spriteSphere );
 	spriteSphere.position.set(posX,posY,0);
@@ -174,18 +176,22 @@ function hitEffect(){
 	spriteSphere.scale.z += 0.5;
 //when scale is 80, change the challenge setting, 
 //when it reaches 120, sprite appear in the center agein
-	if(spriteSphere.scale.x==70){
+	if(spriteSphere.scale.x==10){
+				desMaterial.opacity=0;
+	}
+	if(spriteSphere.scale.x==50){
 		clg++;
 		desPosX=clgArrList[clg][0];
 		desPosY=clgArrList[clg][1];
 		desPosZ=clgArrList[clg][2];
 		desSphere.position.set(desPosX,desPosY,desPosZ);
 	}
-	if(spriteSphere.scale.x==100){
+	if(spriteSphere.scale.x==150){
 		hit=false;
 		spriteSphere.scale.set(1,1,1);
 		posX=0;
 		posY=0;
+		spriteMaterial.opacity=0;
 	}
 }
 //================side function OVER=================
@@ -221,8 +227,8 @@ function animatedRender(){
 	requestAnimationFrame( animatedRender );
 	
 //rotate the destination sphere
-desSphere.rotation.x += 0.01;
-desSphere.rotation.x  += 0.01;
+desSphere.rotation.x += 0.02;
+desSphere.rotation.x  += 0.02;
 
 //initial the movement of sprite
 	spdX+=accX;
@@ -261,7 +267,13 @@ if(posX>desPosX-20
 } else {
 	hitTime=0;
 }
-
+//show the objects
+if(spriteMaterial.opacity<1){
+	spriteMaterial.opacity+=0.02;
+}
+if(desMaterial.opacity<1){
+	desMaterial.opacity+=0.02;
+}
 console.log(desPosX);
 console.log(clg);
 if(hit){
