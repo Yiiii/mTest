@@ -77,6 +77,9 @@ var desMaterial;
 var desSphere;
 var desPosX=clgArrList[clg][0], desPosY=clgArrList[clg][1],desPosZ=clgArrList[clg][2];
 
+//other
+var showInfo=false;
+
 //================side function=================
 var onOrientationChange = function(data){
 	console.log('NEW DEVICE ORIENTATION DATA!:');
@@ -93,7 +96,9 @@ var onOrientationChange = function(data){
 	oscillator.frequency.value= (data.alpha/360)*5000;
 	gainNode.gain.value = .1;
 	console.log("hey");
-	document.getElementById("oData").innerHTML = oText;
+	// if(showInfo==true){
+	// document.getElementById("oData").innerHTML = oText;
+	// }
 };
 
 var latestMdata;
@@ -104,7 +109,9 @@ var onDeviceMotion= function(data){
 	mText += "Acc X :" + data.accelerationIncludingGravity.x + " <br />";
 	mText += "Acc Y : " + data.accelerationIncludingGravity.y + " <br />";
 	mText += "Acc Z : " + data.acceleration.z + " <br />";
-	document.getElementById("mData").innerHTML = mText;
+	// if(showInfo==true){
+	// document.getElementById("mData").innerHTML = mText;
+	// }
 	accX=data.accelerationIncludingGravity.x/4;
 	accY=data.accelerationIncludingGravity.y/4;
 
