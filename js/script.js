@@ -238,7 +238,11 @@ desSphere.rotation.x  += 0.01;
 		accY=-accY/2;
 	}
 //check if the sprite hit the destination
-if(posX>desPosX-20 && posX<desPosX+20 && posY>desPosY-20 && posY<desPosY+20){
+if(posX>clgArrList[clg][0]-20 
+	&& posX<clgArrList[clg][0]+20 
+	&& posY>clgArrList[clg][1]-20 
+	&& posY<clgArrList[clg][1]+20)
+{
 	hitTime++;
 	hit=true;
 } else {
