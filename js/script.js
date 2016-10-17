@@ -181,7 +181,7 @@ function hitEffect(){
 		desPosZ=clgArrList[clg][2];
 		desSphere.position.set(desPosX,desPosY,desPosZ);
 	}
-	if(spriteSphere.scale.x==125){
+	if(spriteSphere.scale.x==200){
 		hit=false;
 		spriteSphere.scale.set(1,1,1);
 		posX=0;
