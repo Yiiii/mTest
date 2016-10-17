@@ -69,9 +69,9 @@ var clg=0;
 //desX,desY,deadPoints,b-board
 ElementInsideEachArrayList:
 var clgArrList=[
-[-width*(1/2-1/10),desPosY=height*(1/2-1/10),0, 0 , 0 ],
+[-width*(1/2-1/10),height*(1/2-1/10),0, 0 , 0 ],
 [width/2-200,0,0, 2 , 0 ],
-[-width*(1/2-1/10),desPosY=height*(1/2-1/10),0, 2 , 1 ]
+[-width*(1/2-1/10),-height*(1/2-1/10),0, 2 , 1 ]
 ];
 
 //================side function=================
