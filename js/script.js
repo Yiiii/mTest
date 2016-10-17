@@ -169,6 +169,9 @@ function hitEffect(){
 //when it reaches 120, sprite appear in the center agein
 	if(spriteSphere.scale.x==80){
 		clg++;
+		desPosX=clgArrList[clg][0];
+		desPosY=clgArrList[clg][1];
+		desPosZ=clgArrList[clg][2];
 		desSphere.position.set(desPosX,desPosY,desPosZ);
 	}
 	if(spriteSphere.scale.x==125){
@@ -252,20 +255,29 @@ if(posX>desPosX-20
 	hitTime=0;
 }
 
+console.log(desPosX);
+console.log(clg);
 if(hit){
 hitEffect();
 }
-console.log(hitTime);
+// console.log(hitTime);
 
 //move the sprite
 	spriteSphere.position.set(posX,posY,0);
 
 //set camera
 // camera.position.set(0,0,1000);
-camera.position.set(0,0,2500);
+camera.position.set(0,0,1000);
 
 //render the graphic, yeah!!!
 	renderer.render(scene, camera);
+
+	document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+    	hit=true;
+	}
+
+}
 	}
 
 //=================DRAW() OVER=====================
