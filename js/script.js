@@ -11,13 +11,6 @@ window.addEventListener('touchstart', function() {
 	source.noteOn(0);
 }, false);
 //
-screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
-
-if (screen.lockOrientationUniversal("landscape-primary")) {
-  // orientation was locked
-} else {
-  // orientation lock failed
-}
 
 var width=window.innerWidth;
 var height= window.innerHeight;
