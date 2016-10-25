@@ -11,6 +11,14 @@ window.addEventListener('touchstart', function() {
 	source.noteOn(0);
 }, false);
 //
+screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
+
+if (screen.lockOrientationUniversal("landscape-primary")) {
+  // orientation was locked
+} else {
+  // orientation lock failed
+}
+
 var width=window.innerWidth;
 var height= window.innerHeight;
 console.log(width+","+height);
@@ -77,6 +85,11 @@ var desMaterial;
 var desSphere;
 var desPosX=clgArrList[clg][0], desPosY=clgArrList[clg][1],desPosZ=clgArrList[clg][2];
 
+//set up the cube game space
+var cubeGeometry = new THREE.BoxGeometry( 5000, 5000, 5000,50,50,50 );
+var cubeMaterial = new THREE.MeshLambertMaterial( {color: 0x00ff00, wireframe:true} );
+var cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
+cube.position.set(0,0,0);
 //other
 var showInfo=false;
 
@@ -218,6 +231,8 @@ function init(){
 	spdY+=accY;
 	posX+=spdX/2;
 	posY+=spdY/2;
+
+scene.add( cube );
 
 createSprite(spriteSize);
 createDes(desPosX,desPosY,desPosZ);
