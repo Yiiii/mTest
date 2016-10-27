@@ -38,6 +38,7 @@ var camera = new THREE.PerspectiveCamera(viewAngle, aspectRatio, near, far);
 //var camera = new THREE.OrthographicCamera ((width / - 1.5), width / 1.5, height / 1.5, height / - 1.5, near, far);
 //create a new scene
 var scene = new THREE.Scene();
+scene.add(camera);
 //prepare the rendering
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(width, height);
@@ -226,9 +227,23 @@ function update(dt) {
         controls.update(dt);
       }
 
-      function render(dt) {
+function render(dt) {
         effect.render(scene, camera);
       }
+
+function fullscreen() {
+        if (container.requestFullscreen) {
+          container.requestFullscreen();
+        } else if (container.msRequestFullscreen) {
+          container.msRequestFullscreen();
+        } else if (container.mozRequestFullScreen) {
+          container.mozRequestFullScreen();
+        } else if (container.webkitRequestFullscreen) {
+          container.webkitRequestFullscreen();
+        }
+      }
+
+
 //================side function OVER=================
 
 //=================SETUP()================
@@ -248,6 +263,8 @@ controls.target.set(
 controls.noPan = true;
 controls.noZoom = true;
 
+camera.position.set(0,0,8000);
+
 function setOrientationControls(e) {
           if (!e.alpha) {
             return;
@@ -261,7 +278,7 @@ function setOrientationControls(e) {
 
           window.removeEventListener('deviceorientation', setOrientationControls, true);
         }
-        window.addEventListener('deviceorientation', setOrientationControls, true);
+window.addEventListener('deviceorientation', setOrientationControls, true);
 
 	// create and add a working-in-process light
 	var pointLight = new THREE.PointLight(0xFFFFFF);
@@ -280,14 +297,13 @@ scene.add( cube );
 createSprite(spriteSize);
 createDes(desPosX,desPosY,desPosZ);
 
+animatedRender();
 }
 //=================SETUP() OVER================
 
 //=================DRAW()=====================
 function animatedRender(){
-	//prepare the render
-	requestAnimationFrame( animatedRender );
-	
+
 //rotate the destination sphere
 desSphere.rotation.x += 0.03;
 desSphere.rotation.x  += 0.03;
@@ -346,7 +362,10 @@ hitEffect();
 
 //set camera
 // camera.position.set(0,0,1000);
-camera.position.set(0,0,1000);
+// camera.position.set(0,0,1000);
+
+	//prepare the render
+	requestAnimationFrame( animatedRender );
 
 update(clock.getDelta());
 // render(clock.getDelta());
@@ -365,4 +384,4 @@ effect.render(scene, camera);
 //=================DRAW() OVER=====================
 
 init();
-animatedRender();
+// animatedRender();
