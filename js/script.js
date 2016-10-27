@@ -370,7 +370,8 @@ hitEffect();
 
 update(clock.getDelta());
 // render(clock.getDelta());
-effect.render(scene, camera);
+// effect.render(scene, camera);
+renderer.render(scene, camera);
 //render the graphic, yeah!!!
 	// renderer.render(scene, camera);
 
