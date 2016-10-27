@@ -305,8 +305,8 @@ createDes(desPosX,desPosY,desPosZ);
 function animatedRender(){
 
 //rotate the destination sphere
-desSphere.rotation.x += 0.03;
-desSphere.rotation.x  += 0.03;
+// desSphere.rotation.x += 0.03;
+// desSphere.rotation.x  += 0.03;
 
 //initial the movement of sprite
 	spdX+=accX;
@@ -367,7 +367,7 @@ hitEffect();
 	//prepare the render
 	requestAnimationFrame( animatedRender );
 
-update(clock.getDelta());
+// update(clock.getDelta());
 // render(clock.getDelta());
 // effect.render(scene, camera);
 renderer.render(scene, camera);
