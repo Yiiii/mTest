@@ -34,20 +34,22 @@ var viewAngle = 75;
 var aspectRatio = width / height;
 var near = 0.1;
 var far = 80000;
-// var camera = new THREE.PerspectiveCamera(viewAngle, aspectRatio, near, far);
-var camera = new THREE.OrthographicCamera ((width / - 1.5), width / 1.5, height / 1.5, height / - 1.5, near, far);
+var camera = new THREE.PerspectiveCamera(viewAngle, aspectRatio, near, far);
+//var camera = new THREE.OrthographicCamera ((width / - 1.5), width / 1.5, height / 1.5, height / - 1.5, near, far);
 //create a new scene
 var scene = new THREE.Scene();
 //prepare the rendering
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(width, height);
 document.body.appendChild(renderer.domElement);
-
+var element = renderer.domElement;
+var container = document.getElementById('webglviewer');
+container.appendChild(element);
 //change the whole space color
 var skyColor = new THREE.Color( 0.4549019607843137, 0.4196078431372549, 0.4549019607843137);
 console.log(skyColor);
 renderer.setClearColor(skyColor,1);
-
+var effect = new THREE.StereoEffect(renderer);
 
 //hitrule preparation
 var hit=false;
@@ -85,7 +87,8 @@ var cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
 cube.position.set(0,0,0);
 //other
 var showInfo=false;
-
+var controls;
+var clock = new THREE.Clock();
 //================side function=================
 var onOrientationChange = function(data){
 	console.log('NEW DEVICE ORIENTATION DATA!:');
@@ -132,6 +135,16 @@ function onDocumentMouseMove(event){
 	mouseX = (event.clientX - width/2);
 	mouseY = (event.clientY -height/2);
 }
+function resize() {
+        var width = container.offsetWidth;
+        var height = container.offsetHeight;
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(width, height);
+        effect.setSize(width, height);
+      }
 
 function onWindowResize(){
 	camera.aspect = width / height;
@@ -204,6 +217,18 @@ posY+=spdY;
 		desMaterial.opacity=0;
 	}
 }
+
+function update(dt) {
+        resize();
+
+        camera.updateProjectionMatrix();
+
+        controls.update(dt);
+      }
+
+      function render(dt) {
+        effect.render(scene, camera);
+      }
 //================side function OVER=================
 
 //=================SETUP()================
@@ -213,6 +238,31 @@ function init(){
 	document.addEventListener('mousemove', onDocumentMouseMove, false);
 	window.addEventListener('resize', onWindowResize, false);
 	console.log(clgArrList);
+
+controls = new THREE.OrbitControls(camera, element);
+controls.target.set(
+  camera.position.x + 0.15,
+  camera.position.y,
+  camera.position.z
+);
+controls.noPan = true;
+controls.noZoom = true;
+
+function setOrientationControls(e) {
+          if (!e.alpha) {
+            return;
+          }
+
+          controls = new THREE.DeviceOrientationControls(camera, true);
+          controls.connect();
+          controls.update();
+
+          element.addEventListener('click', fullscreen, false);
+
+          window.removeEventListener('deviceorientation', setOrientationControls, true);
+        }
+        window.addEventListener('deviceorientation', setOrientationControls, true);
+
 	// create and add a working-in-process light
 	var pointLight = new THREE.PointLight(0xFFFFFF);
 	pointLight.position.set(10,50,200)
@@ -298,8 +348,11 @@ hitEffect();
 // camera.position.set(0,0,1000);
 camera.position.set(0,0,1000);
 
+update(clock.getDelta());
+// render(clock.getDelta());
+effect.render(scene, camera);
 //render the graphic, yeah!!!
-	renderer.render(scene, camera);
+	// renderer.render(scene, camera);
 
 	document.body.onkeyup = function(e){
     if(e.keyCode == 32){
