@@ -108,7 +108,7 @@ var onOrientationChange = function(data){
 	gainNode.gain.value = .1;
 	console.log("hey");
 	// if(showInfo==true){
-	document.getElementById("oData").innerHTML = oText;
+	// document.getElementById("oData").innerHTML = oText;
 	// }
 };
 
@@ -370,7 +370,7 @@ hitEffect();
 update(clock.getDelta());
 // render(clock.getDelta());
  // effect.render(scene, camera);
-// renderer.render(scene, camera);
+renderer.render(scene, camera);
 //render the graphic, yeah!!!
 	// renderer.render(scene, camera);
 
