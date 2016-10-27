@@ -362,7 +362,7 @@ hitEffect();
 
 //set camera
 // camera.position.set(0,0,1000);
-camera.position.set(0,0,1000);
+// camera.position.set(0,0,1000);
 
 	//prepare the render
 	requestAnimationFrame( animatedRender );
