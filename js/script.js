@@ -82,7 +82,7 @@ var desSphere;
 var desPosX=clgArrList[clg][0], desPosY=clgArrList[clg][1],desPosZ=clgArrList[clg][2];
 
 //set up the cube game space
-var cubeWidth=5000, cubeHeight=5000,cubeDepth=5000;
+var cubeWidth=8000, cubeHeight=8000,cubeDepth=8000;
 var cubeGeometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 5000,50,50,50 );
 var cubeMaterial = new THREE.MeshLambertMaterial( {color: 0x00ff00, wireframe:true} );
 var cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
