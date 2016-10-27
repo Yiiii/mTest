@@ -270,7 +270,7 @@ function setOrientationControls(e) {
             return;
           }
 
-          controls = new THREE.DeviceOrientationControls(camera, true);
+          controls = new THREE.DeviceOrientationControls(camera);
           controls.connect();
           controls.update();
 
