@@ -266,20 +266,20 @@ controls.noZoom = true;
 
 camera.position.set(0,0,1000);
 
-// function setOrientationControls(e) {
-//           if (!e.alpha) {
-//             return;
-//           }
+function setOrientationControls(e) {
+          if (!e.alpha) {
+            return;
+          }
 
-//           controls = new THREE.DeviceOrientationControls(camera);
-//           controls.connect();
-//           controls.update();
+          controls = new THREE.DeviceOrientationControls(camera);
+          controls.connect();
+          controls.update();
 
-//           element.addEventListener('click', fullscreen, false);
+          element.addEventListener('click', fullscreen, false);
 
-//           window.removeEventListener('deviceorientation', setOrientationControls, true);
-//         }
-// window.addEventListener('deviceorientation', setOrientationControls, true);
+          window.removeEventListener('deviceorientation', setOrientationControls, true);
+        }
+window.addEventListener('deviceorientation', setOrientationControls, true);
 
 	// create and add a working-in-process light
 	var pointLight = new THREE.PointLight(0xFFFFFF);
