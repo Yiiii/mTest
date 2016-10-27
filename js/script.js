@@ -367,7 +367,7 @@ camera.position.set(0,0,1000);
 	//prepare the render
 	requestAnimationFrame( animatedRender );
 
-update(clock.getDelta());
+// update(clock.getDelta());
 // render(clock.getDelta());
 effect.render(scene, camera);
 //render the graphic, yeah!!!
