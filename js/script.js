@@ -300,6 +300,8 @@ createDes(desPosX,desPosY,desPosZ);
 
 }
 //=================SETUP() OVER================
+desSphere.rotation.x += 0.03;
+desSphere.rotation.x  += 0.03;
 
 //=================DRAW()=====================
 function animatedRender(){
@@ -367,7 +369,7 @@ hitEffect();
 	//prepare the render
 	requestAnimationFrame( animatedRender );
 
-// update(clock.getDelta());
+update(clock.getDelta());
 // render(clock.getDelta());
 // effect.render(scene, camera);
 renderer.render(scene, camera);
