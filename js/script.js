@@ -367,7 +367,7 @@ hitEffect();
 // camera.position.set(0,0,1000);
 
 
-// update(clock.getDelta());
+update(clock.getDelta());
 // render(clock.getDelta());
  effect.render(scene, camera);
 //renderer.render(scene, camera);
