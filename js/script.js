@@ -82,7 +82,8 @@ var desSphere;
 var desPosX=clgArrList[clg][0], desPosY=clgArrList[clg][1],desPosZ=clgArrList[clg][2];
 
 //set up the cube game space
-var cubeGeometry = new THREE.BoxGeometry( 5000, 5000, 5000,50,50,50 );
+var cubeWidth=5000, cubeHeight=5000,cubeDepth=5000;
+var cubeGeometry = new THREE.BoxGeometry( cubeWidth, cubeHeight, 5000,50,50,50 );
 var cubeMaterial = new THREE.MeshLambertMaterial( {color: 0x00ff00, wireframe:true} );
 var cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
 cube.position.set(0,0,0);
@@ -315,22 +316,22 @@ desSphere.rotation.x  += 0.03;
 	posY+=spdY;
 
 //setting boundary
-		if(posX>=width/2+1){
-		posX=width/2;
+		if(posX>=cubeWidth/2+1){
+		posX=cubeWidth/2;
 		spdX=-spdX/4;
 		accX=-accx/2;
 	}
-	else if(posX<=-(width/2+1)){
-		posX=-width/2;
+	else if(posX<=-(cubeWidth/2+1)){
+		posX=-cubeWidth/2;
 		spdX=-spdX/4;
 		accX=-accx/2;
 	}
-	if(posY>=height/2+1){
-		posY=height/2;
+	if(posY>=cubeHeight/2+1){
+		posY=cubeHeight/2;
 		spdY=-spdY/4;
 		accY=-accY/2;
-	} else if(posY<=-(height/2+1)){
-		posY=-height/2;
+	} else if(posY<=-(cubeHeight/2+1)){
+		posY=-cubeHeight/2;
 		spdY=-spdY/4;
 		accY=-accY/2;
 	}
