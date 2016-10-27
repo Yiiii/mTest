@@ -298,7 +298,6 @@ scene.add( cube );
 createSprite(spriteSize);
 createDes(desPosX,desPosY,desPosZ);
 
-animatedRender();
 }
 //=================SETUP() OVER================
 
@@ -386,4 +385,4 @@ renderer.render(scene, camera);
 //=================DRAW() OVER=====================
 
 init();
-// animatedRender();
+animatedRender();
