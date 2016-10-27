@@ -300,8 +300,6 @@ createDes(desPosX,desPosY,desPosZ);
 
 }
 //=================SETUP() OVER================
-desSphere.rotation.x += 0.03;
-desSphere.rotation.x  += 0.03;
 
 //=================DRAW()=====================
 function animatedRender(){
@@ -309,8 +307,8 @@ function animatedRender(){
 	//prepare the render
 	requestAnimationFrame( animatedRender );
 //rotate the destination sphere
-// desSphere.rotation.x += 0.03;
-// desSphere.rotation.x  += 0.03;
+desSphere.rotation.x += 0.03;
+desSphere.rotation.x  += 0.03;
 
 //initial the movement of sprite
 	spdX+=accX;
