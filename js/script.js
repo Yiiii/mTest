@@ -263,7 +263,7 @@ controls.target.set(
 controls.noPan = true;
 controls.noZoom = true;
 
-camera.position.set(0,0,8000);
+camera.position.set(0,0,1000);
 
 function setOrientationControls(e) {
           if (!e.alpha) {
@@ -367,7 +367,7 @@ camera.position.set(0,0,1000);
 	//prepare the render
 	requestAnimationFrame( animatedRender );
 
-// update(clock.getDelta());
+update(clock.getDelta());
 // render(clock.getDelta());
 effect.render(scene, camera);
 //render the graphic, yeah!!!
